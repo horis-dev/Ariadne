@@ -1,0 +1,5 @@
+services:
+ dede:
+   image: hor1sm/dedecms-cnvd_2018_01221
+   ports:
+    - "0:80"

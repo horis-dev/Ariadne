@@ -1,0 +1,33 @@
+services:
+  elastic_search:
+    image: vulhub/elasticsearch:1.1.1
+    ports:
+      - "0:9200"
+    networks:
+      - es-network
+    
+  python-middleware:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    volumes:
+      - ./app:/app
+    depends_on:
+      - elastic_search
+    networks:
+      - es-network
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "50000:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - python-middleware
+    networks:
+      - es-network
+
+networks:
+  es-network:
+    driver: bridge

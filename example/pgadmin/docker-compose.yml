@@ -1,0 +1,5 @@
+services:
+ pgadmin:
+   image: vulhub/pgadmin:7.6
+   ports:
+    - "0:5050"

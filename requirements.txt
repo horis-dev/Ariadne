@@ -1,0 +1,17 @@
+beautifulsoup4==4.14.2
+click==8.1.6
+dataclasses_json==0.6.7
+Flask==3.1.2
+loguru==0.7.3
+msgspec==0.19.0
+networkx==3.5
+numexpr==2.11.0
+numpy==2.3.4
+pandas==2.3.3
+pymongo==4.15.3
+pyvis==0.3.2
+Requests==2.32.5
+rich==14.2.0
+SQLAlchemy==2.0.44
+tqdm==4.67.1
+typing_extensions==4.15.0

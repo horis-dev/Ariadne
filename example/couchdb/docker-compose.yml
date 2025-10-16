@@ -1,0 +1,11 @@
+services:
+  couchdb:
+    image: couchdb:admin
+    ports:
+      - "0:5984"
+    environment:
+      - COUCHDB_REQUIRE_VALID_USER=false
+      - COUCHDB_CONFIG_COUCH_DB_ANONYMOUS_CREATE_DB=true
+      - COUCHDB_CONFIG_QUERY_SERVERS_ENABLE_ERLANG=true
+      - COUCHDB_CONFIG_HTTPD_REQUIRE_VALID_USER=false
+      - COUCHDB_CONFIG_ADMINS_ADMIN=password

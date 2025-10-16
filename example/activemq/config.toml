@@ -1,0 +1,44 @@
+# Vulnerability name
+cve_name = "activemq"
+
+# Predefined files
+final_attack = ""
+server_state = "predefined/new_activemq_state.bin"
+depended_state = "predefined/new_activemq_state.bin"
+api_dependency = "predefined/new_api_dependency_model.bin"
+seed_input = ""
+init_wordlib = "predefined/new_init_wordlib.bin"
+target_wordlib = "predefined/new_target_wordlib.bin"
+
+# Fuzz parameters
+fuzz_batch_size = 1
+
+# Executor parameters
+max_executor_numbers = 4  # Maximum number of scenarios that can be started
+status_code_200_only = true  # Keep only requests with 200 status code
+hc_pre_wait = 12  # Wait time before scenario startup
+hc_max_retries = 10  # Max retries when scenario startup fails
+hc_interval = 3  # Retry interval for scenario startup failures
+
+# Field dependency-graph parameters
+optional_api_mutation_probability = 0
+init_wordlib_mutation_probability = 0
+p_use_dependency = 1  # Probability to choose a Position from the dependency graph (otherwise choose itself)
+p_local_wordlib = 1   # Preference weight for selecting values from the local wordlib during mutation (max 1)
+p_target_wordlib = 1  # Preference weight for selecting values from the target wordlib (max 1)
+
+# API dependency-graph parameters
+h = "4*exp(-2*x)"
+b = 1.0
+ratio = "1:1:0"  # response : file : database
+static_state_satisfiability = "1:5:5"  # static : state-diff : satisfiability weighting
+
+HAVOC_CYCLES_INIT = 2  # Base cycles for deterministic mutations (default 1024)
+HAVOC_CYCLES = 8  # Base cycles for non-deterministic mutations (default 8192)
+min_weight = -1
+max_weight = -1
+cooling_schedule = "SAN_EXP"  # Temperature calculation method, default SAN_EXP
+t_x = 10.0  # Time threshold to enter the next phase
+MAX_FACTOR = 2  # Factor used when computing weights
+SKIP_TO_NEW_PROB = 99  # Assumed skip probability (%) of jumping to new
+havoc_div = 2  # Mainly affected by target program execution speed

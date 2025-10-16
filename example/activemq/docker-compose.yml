@@ -1,0 +1,5 @@
+services:
+ activemq:
+   image: vulhub/activemq:5.11.1-with-cron
+   ports:
+    - "0:8161"

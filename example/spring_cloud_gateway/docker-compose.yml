@@ -1,0 +1,5 @@
+services:
+  spring_cloud_gateway:
+    image: vulhub/spring_cloud_gateway:3.1.0
+    ports:
+      - "0:8080"

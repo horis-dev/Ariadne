@@ -1,0 +1,36 @@
+cve_name = "dede"
+final_attack = "predefined/final_attack.bin"
+server_state = "predefined/attacked_state.bin"
+depended_state = "predefined/attacked_state.bin"
+api_dependency = "predefined/api_dependency_model.bin"
+seed_input = "predefined/seeds.bin"
+max_executor_numbers = 4  # Maximum number of scenarios that can be started
+fuzz_batch_size = 1
+init_wordlib = "predefined/init_words.bin"  # Initial wordlist file path
+target_wordlib = "predefined/target_wordlib.bin"
+status_code_200_only = true  # Keep only requests with 200 status code
+optional_api_mutation_probability = 0.5  # Probability to mutate optional API request parameters
+init_wordlib_mutation_probability = 0.3  # Probability to choose value domains from the initial wordlist for mutation
+
+hc_pre_wait = 30  # Wait time before scenario start
+hc_max_retries = 30  # Max retries if scenario start fails
+hc_interval = 3  # Retry interval when scenario start fails
+p_use_dependency = 0.9  # Probability of selecting Position from the dependency graph (otherwise select itself)
+p_local_wordlib = 0.9   # Priority coefficient for choosing values from local corpus during mutation (max 1)
+p_target_wordlib = 1  # Priority coefficient for choosing values from target corpus (max 1)
+
+# API dependency graph
+h = "4*exp(-2*x)"
+b = 1.0
+ratio = "0:0:1"  # response : file : database
+graph_table_file = "1:1:0"  # response : database : file
+static_state_satisfiability = "1:0:0"  # static : state_diff : satisfiability
+HAVOC_CYCLES_INIT = 2  # Base cycle count for deterministic mutations (default 1024)
+HAVOC_CYCLES = 8  # Base cycle count for non-deterministic mutations (default 8192)
+min_weight = 0
+max_weight = -1
+cooling_schedule = "SAN_EXP"  # Temperature calculation method, default SAN_EXP
+t_x = 10.0  # Time threshold to enter next phase
+MAX_FACTOR = 2  # Factor used when computing weights
+SKIP_TO_NEW_PROB = 99  # Assumed probability to skip, expressed as 99%
+havoc_div = 2  # Mainly influenced by the execution speed of the target program

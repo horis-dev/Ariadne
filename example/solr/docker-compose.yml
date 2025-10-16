@@ -1,0 +1,15 @@
+services:
+  solr:
+    image: pyh23/solr:8.2.0-installed
+    ports:
+      - "0:8983"
+    volumes:
+      - ./jacocoagent.jar:/opt/solr/server/jacocoagent.jar
+      - ./jacococli.jar:/opt/solr/server/jacococli.jar
+      - ./java-agent.jar:/java-agent.jar
+      - ./libquicklog.so:/quicklog/libquicklog.so
+      - ./coverage-reports:/jacoco-reports
+      - ./solr:/opt/solr/bin/solr
+    environment:
+      JAVA_TOOL_OPTIONS: "-javaagent:/java-agent.jar"
+      LD_LIBRARY_PATH: "/quicklog"

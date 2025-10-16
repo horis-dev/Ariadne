@@ -1,0 +1,5 @@
+services:
+ elastic_search:
+   image: vulhub/elasticsearch:1.1.1
+   ports:
+    - "0:9200"
