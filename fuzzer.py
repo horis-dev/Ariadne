@@ -370,13 +370,8 @@ class Fuzzer:
 
         StageInfo = ["Approach", "Info"]
         start_time = sa_score.get_cur_time()
-        min_weight, max_weight = -1, -1
-        cooling_schedule = "SAN_EXP"
         t_x = 10
         stage_time = t_x / 10
-        MAX_FACTOR = 2
-        SKIP_TO_NEW_PROB = 99
-        havoc_div = 2
         fuzz_range = 0
 
         # step 1. Execute initial seed sequences

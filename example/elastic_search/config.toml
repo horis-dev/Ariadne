@@ -27,7 +27,7 @@ static_state_satisfiability = "1:0:0"  # static : state_diff : satisfiability
 
 HAVOC_CYCLES_INIT = 2  # Base cycle count for deterministic mutations (default 1024)
 HAVOC_CYCLES = 8  # Base cycle count for non-deterministic mutations (default 8192)
-min_weight = -1
+min_weight = 0
 max_weight = -1
 cooling_schedule = "SAN_EXP"  # Temperature calculation method, default SAN_EXP
 t_x = 10.0  # Time threshold to enter next phase

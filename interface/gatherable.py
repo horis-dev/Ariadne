@@ -125,7 +125,11 @@ class Gatherable(ABC):
         parsed_url = urlparse(url)
         path = parsed_url.path or "/"
 
+
+
         response = self._session.request(method, url, **kwargs)
+        # print(response)
+
 
         files = kwargs.get('files')
         if files:
@@ -223,21 +227,21 @@ class Gatherable(ABC):
         model.train(self._request_responses)
         model.train(self._request_files)
         model.train(self._request_dbs)
-        model.dump_bin("api_dependency_model.bin")
+        model.dump_bin("./predefined/api_dependency_model.bin")
 
         time.sleep(2)
         normal_state = self.get_state()
         wordlib = model.to_wordlib()
         for word in normal_state.to_wordlist().dictionary:
             wordlib.insert_word(word)
-        wordlib.dump_bin("init_words.bin")
+        wordlib.dump_bin("./predefined/init_words.bin")
 
         self.attack()
         time.sleep(2)
         attacked_state = self.get_state()
         target_lib = WordLib(attacked_state.to_wordlist().dictionary)
         target_lib.brush(self.get_final_attack_corpora(), self.final_attack_weight())
-        target_lib.dump_bin("target_wordlib.bin")
-        attacked_state.dump_bin("attacked_state.bin")
+        target_lib.dump_bin("./predefined/target_wordlib.bin")
+        attacked_state.dump_bin("./predefined/attacked_state.bin")
 
-        Path("seeds.bin").write_bytes(msgspec.msgpack.encode(self.init_seeds()))
+        Path("./predefined/seeds.bin").write_bytes(msgspec.msgpack.encode(self.init_seeds()))
