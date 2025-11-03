@@ -1,6 +1,6 @@
 services:
   couchdb:
-    image: couchdb:admin
+    image: ariadne26/couchdb:admin
     ports:
       - "0:5984"
     environment:

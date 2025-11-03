@@ -1,0 +1,47 @@
+services:
+  appwrite_cve:
+    image: appwrite/appwrite:0.14.2
+    restart: unless-stopped
+    ports:
+      - "0:80"
+    networks:
+      - appwrite
+    depends_on:
+      - mariadb
+      - redis
+    environment:
+      - _APP_ENV=development
+      - _APP_OPTIONS_ABUSE=disabled
+      - _APP_OPTIONS_FORCE_HTTPS=disabled
+      - _APP_DOMAIN=localhost
+      - _APP_DOMAIN_TARGET=localhost
+      - _APP_REDIS_HOST=redis
+      - _APP_REDIS_PORT=6379
+      - _APP_DB_HOST=mariadb
+      - _APP_DB_PORT=3306
+      - _APP_DB_SCHEMA=appwrite
+      - _APP_DB_USER=appwrite
+      - _APP_DB_PASS=appwrite
+      - _APP_USAGE_STATS=disabled
+
+  mariadb:
+    image: mariadb:10.7
+    ports:
+      - "0:3306"
+    restart: unless-stopped
+    networks:
+      - appwrite
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=appwrite
+      - MYSQL_USER=appwrite
+      - MYSQL_PASSWORD=appwrite
+
+  redis:
+    image: redis:6.2-alpine
+    restart: unless-stopped
+    networks:
+      - appwrite
+
+networks:
+  appwrite:

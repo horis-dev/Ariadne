@@ -1,7 +1,7 @@
 services:
   gitlab14:
     #image: gitlab/gitlab-ce:14.1.0-ce.0
-    image: gitlab-ce-fast-start:14.1.0
+    image: jingrun24/gitlab-ce-installed:14.1.0
     #container_name: gitlab14
     hostname: "gitlab.local"
     shm_size: "1g"

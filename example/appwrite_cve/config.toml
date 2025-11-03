@@ -1,0 +1,44 @@
+
+cve_name = "appwrite_cve"
+
+
+final_attack = ""
+server_state = "predefined/attacked_state.bin"
+depended_state = "predefined/depended_state.bin"
+api_dependency = "predefined/api_dependency_model.bin"
+seed_input = ""
+init_wordlib = "predefined/init_words.bin"
+target_wordlib = "predefined/target_wordlib.bin"
+
+
+fuzz_batch_size = 1
+
+
+max_executor_numbers = 30
+status_code_200_only = true
+hc_pre_wait = 12
+hc_max_retries = 10
+hc_interval = 3
+
+
+optional_api_mutation_probability = 0
+init_wordlib_mutation_probability = 0
+p_use_dependency = 1
+p_local_wordlib = 1
+p_target_wordlib = 1
+
+
+h = "exp(-100*x)"
+b = 1.0
+ratio = "0:0:1" #响应 文件 数据库
+static_state_satisfiability = "1:2:2"
+
+HAVOC_CYCLES_INIT=2
+HAVOC_CYCLES=8
+min_weight = -1
+max_weight = -1
+cooling_schedule = "SAN_EXP"
+t_x = 10.0
+MAX_FACTOR = 2
+SKIP_TO_NEW_PROB = 99
+havoc_div = 2

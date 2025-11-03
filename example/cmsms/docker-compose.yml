@@ -1,6 +1,6 @@
 services:
   cmsms:
-    image: pyh23/cmsms:2.2.9.1-installed
+    image: ariadne26/cmsms:2.2.9.1-installed
     ports:
      - "0:80"
     depends_on:
@@ -8,7 +8,7 @@ services:
     volumes:
      - ./config.php:/var/www/html/config.php
   mysql:
-    image: pyh23/mysql:5.7-cmsms-installed
+    image: ariadne26/mysql:5.7-cmsms-installed
     ports:
      - "0:3306"
     environment:
