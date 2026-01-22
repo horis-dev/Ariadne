@@ -1,6 +1,6 @@
-# 🚀 Fuzzing Framework for Custom Vulnerability Scenarios
+# 🚀 Attack Chain Reconstruction Engine for Custom Scenarios
 
-This project is an automated fuzzing framework based on Docker and Python, designed to generate vulnerability discovery and exploitation flows across various service scenarios such as ElasticSearch. Users can extend their own testing environments through custom API documentation, configuration files, and tooling.
+This project is an automated state-search and attack-chain reconstruction engine based on Docker and Python, designed to build vulnerability discovery and exploitation flows across various service scenarios such as ElasticSearch. Users can extend their own testing environments through custom API documentation, configuration files, and tooling.
 
 ---
 
@@ -23,13 +23,13 @@ pip install -r requirements.txt
 
 ## ▶️ Quick Start
 
-Run the fuzzing process using the built-in ElasticSearch scenario:
+Run the state-search process using the built-in ElasticSearch scenario:
 
 ```bash
 python3 main.py   --config-path ./example/elastic_search/config.toml   --docker-compose-path ./example/elastic_search/docker-compose.yml
 ```
 
-Fuzzing results will be saved to:
+Results will be saved to:
 
 ```
 ./success
@@ -39,7 +39,7 @@ Fuzzing results will be saved to:
 
 ## 🧪 Creating a Custom Test Scenario (`test`)
 
-If you need to fuzz a custom service scenario (e.g., `test`), follow the structure used in the `./example` directory. Your custom scenario must include the following files:
+If you need to run a custom service scenario (e.g., `test`), follow the structure used in the `./example` directory. Your custom scenario must include the following files:
 
 | Required File     | Path Example |
 |-------------------|--------------|
@@ -99,7 +99,7 @@ example/
 ## 📝 Usage Tips
 
 - Run the official scenarios first to understand output formats.  
-- Ensure Docker services start properly during custom scenario fuzzing.  
+- Ensure Docker services start properly during custom scenario execution.
 - All request and response logs are automatically recorded for analysis.
 
 ---
